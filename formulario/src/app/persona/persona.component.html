@@ -1,0 +1,78 @@
+<mat-card class="card">
+    <form (submit)="registrarPersona()">
+        <h3>Datos de usuario:</h3>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.nombre" matInput placeholder="Nombre" minlength =3 required>
+            </mat-form-field>
+        <br>
+            <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.apellidos" matInput placeholder="Apellidos" type="text" minlength =3 required>
+            </mat-form-field>
+        <br>
+            <mat-form-field>
+                <mat-label>Edad</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.edad" matInput placeholder="Edad" type="number" min=0 max=125 required>
+            </mat-form-field>
+        <br>
+            <mat-form-field>
+                <mat-label>DNI</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.dni" matInput placeholder="DNI" type="text" minlength =9 maxlength=9 required>
+            </mat-form-field>
+        <br>      
+            <mat-form-field>
+                <mat-label>Cumpleaños</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.fechaNacimiento" matInput placeholder="Cumpleaños" type="date" required>
+            </mat-form-field>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Cumpleaños</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+        <!-- <mat-form-field aspect="fill">
+            <mat-label> Cumpleaños</mat-label>
+            <input matInput [matDatepicker]="fechaNacimiento">
+                <mat-datepicker-toggle matSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+                <mat-datepicker fechaNacimiento></mat-datepicker>
+            </mat-form-field> -->
+
+        <br>
+            <mat-form-field>
+                <mat-label>Color Favorito</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.color" matInput placeholder="Color Favorito" type="text" minlength =3 required>
+            </mat-form-field>
+        <br>
+            <mat-form-field>
+                <mat-label>Sexo</mat-label>
+                <input [ngModelOptions]="{standalone: true}" [(ngModel)]="persona.sexo" matInput placeholder="Sexo" type="text">
+                <input type="radio" name="sexo" value="hombre">Hombre<br>
+                <input type="radio" name="sexo" value="mujer">Mujer<br>
+                <input type="radio" name="sexo" value="otro">Otro<br>
+                <input type="radio" name="sexo" value="noespecificado">No especificado<br>
+            </mat-form-field>
+        <br>    
+
+        <button mat-raised-button color="primary" type="submit">Registrar</button>
+    </form>
+</mat-card>
+
+<mat-card class="card">
+    <h2>Registro de Personas</h2>
+    <ul>
+        <li *ngFor="let persona of listaPersonas; let i=index">
+            <!-- {{i}} -->
+            {{persona.nombre}}
+            {{persona.apellidos}}
+            {{persona.edad}}
+            {{persona.dni}}
+            {{persona.fechaNacimiento}}
+            {{persona.color}}
+            {{persona.sexo}}
+    
+            <button mat-raised-button color="primary" (click)="modificar(i)" class="btn-modificar">Modificar</button>
+            <button mat-raised-button color="warn" (click)="eliminar(i)" class="btn-eliminar">Eliminar</button>
+        </li>
+    </ul>
+</mat-card>

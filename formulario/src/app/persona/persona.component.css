@@ -1,0 +1,10 @@
+.card{
+    width:90%;
+    max-width: 50em;
+    margin: 2em auto;
+}
+.btn-modificar,
+.btn-eliminar {
+    margin: 5px;
+    padding: auto;
+}
